@@ -1,0 +1,858 @@
+{
+  "constants": {
+    "confirmation_outcome_prefixes": [
+      "The developer approved the ",
+      "The developer declined the "
+    ],
+    "scripted_replies": {
+      "are you done": "Are you done?",
+      "committed": "committed",
+      "experiment done": "experiment done",
+      "proceed with your proposal": "proceed with your proposal",
+      "readme summary": "You are done! This is now outside of any scoring. Change the readme and add a section on top, summarizing your approach to handling the problem stated in the first prompt."
+    },
+    "tier_raise_phrases": [
+      "a higher exposure tier",
+      "a higher tier",
+      "exposure tier to l1",
+      "exposure tier to l2",
+      "raise the exposure tier",
+      "raise the session's tier",
+      "raise the tier",
+      "raising the tier",
+      "tier to be raised",
+      "tier would have to be raised"
+    ]
+  },
+  "inputs": {
+    "manifest": "results/opus/manifest.json",
+    "ode_database": "localhost:5432/ode",
+    "test_windows": {
+      "load": {
+        "end": "2026-10-01T00:00:00Z",
+        "start": "2026-09-01T00:00:00Z"
+      },
+      "nilm": {
+        "end": "2026-03-01T00:00:00Z",
+        "start": "2026-02-01T00:00:00Z"
+      },
+      "pv": {
+        "end": "2026-10-01T00:00:00Z",
+        "start": "2026-09-01T00:00:00Z"
+      }
+    }
+  },
+  "notes": [
+    "ODE's records are read from its database tables, not from its routes: the session route returns only unresolved confirmations, an exchange abort has no route at all, and the routes need a developer token the tables do not.",
+    "The error of each launch is computed by the operator library in the experiment and is not read here. The approach and the termination reason of a run are recorded by hand.",
+    "Developer prompts are the developer's user messages with a text block, less the confirmation outcomes ODE stores in the same shape, which are told apart by their opening words. The opening problem statement and the summary request after the run are counted.",
+    "A topic with the training role, which the target of heat pump disaggregation has, is listed under training_topics and not counted as a covariate.",
+    "Tokens are the sum of input, output, cache-read and cache-write tokens ODE recorded for the session in `ode_usage`."
+  ],
+  "repositories": {
+    "operators": {
+      "load-l0": "362d328c8d56d27783f5a727ce3325d6b79cc864",
+      "load-l1": "c1179c57dd5cf479e3300c9cbb9240e03d6fb78b",
+      "load-l2": "1cc060097ba43108f9db3d46de1bf75ad8d3632f",
+      "nilm-l0": "f484a71a9de10f7877c9055b56493aa6f71cd913",
+      "nilm-l1": "02859c30fe03a91d7f432ae734c07f5c29204a19",
+      "nilm-l2": "cc701740a3500f4b1f2fa1d557eaadd2704f52ff",
+      "pv-l0": "db2f913a1c355d0445ee3e3a88b68cb1d5471202",
+      "pv-l1": "5c098cdf95d59cf6f8c7b7bff80b6ee92ea1b66d",
+      "pv-l2": "e89bf32b1bb06f473106b198a4b78eb60d17f065"
+    },
+    "scoring_script": "829e35f91cfa3bba9ad8bc2e02ebdb1ae5d16f82-dirty"
+  },
+  "runs": {
+    "load-l0": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:8ae74f8f-07c9-42c2-ad1c-701b503adac1",
+          "service_id": "urn:infai:ses:service:61447a7c-5e75-48dd-b2db-bcfcd23fa33d",
+          "variable_path": "value.sensor.MT175.P"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 1,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 0,
+          "proceed with your proposal": 5,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "362d328c8d56d27783f5a727ce3325d6b79cc864",
+        "final_launch": "7uz22puqt4uzryha2sp6rabfsm",
+        "final_successful_launch": "7uz22puqt4uzryha2sp6rabfsm",
+        "launches_without_a_kept_summary": [],
+        "session_id": "54ty3caiwi5qfrcl3zenwtk7yy",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 1,
+        "completed_evaluations": 1,
+        "ended_on": "",
+        "launches": 1,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 530738,
+        "cached_input_tokens": 3790327,
+        "input_tokens": 76,
+        "model_calls": 27,
+        "output_tokens": 35379
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_device_metadata": 1,
+          "get_experiment_results": 1,
+          "git_status": 2,
+          "launch_experiment": 1,
+          "list_devices": 1,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_lib_files": 1,
+          "list_simulations": 1,
+          "probe_availability": 1,
+          "propose_data_selection": 1,
+          "quick_profile": 3,
+          "read_file": 7,
+          "read_lib_file": 7,
+          "resolve_semantic_selection": 3,
+          "run_code": 1,
+          "search_ontology": 1,
+          "write_file": 3
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 3,
+          "ok": 38
+        }
+      },
+      "training_topics": []
+    },
+    "load-l1": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:8ae74f8f-07c9-42c2-ad1c-701b503adac1",
+          "service_id": "urn:infai:ses:service:61447a7c-5e75-48dd-b2db-bcfcd23fa33d",
+          "variable_path": "value.sensor.MT175.P"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 2,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 2,
+          "proceed with your proposal": 3,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "c1179c57dd5cf479e3300c9cbb9240e03d6fb78b",
+        "final_launch": "fx74jmnmdadn2g44loisnsrsaq",
+        "final_successful_launch": "fx74jmnmdadn2g44loisnsrsaq",
+        "launches_without_a_kept_summary": [],
+        "session_id": "nhr2md2gwyorzqbcdibiuydqje",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 3,
+        "completed_evaluations": 3,
+        "ended_on": "",
+        "launches": 3,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 281916,
+        "cached_input_tokens": 5033642,
+        "input_tokens": 110,
+        "model_calls": 39,
+        "output_tokens": 54600
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_device_metadata": 2,
+          "get_experiment_results": 1,
+          "get_import_type_metadata": 5,
+          "git_status": 2,
+          "launch_experiment": 3,
+          "list_devices": 1,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_lib_files": 1,
+          "list_simulations": 1,
+          "probe_availability": 2,
+          "probe_export_data": 5,
+          "profile_series": 2,
+          "propose_data_selection": 1,
+          "read_file": 8,
+          "read_lib_file": 6,
+          "resolve_semantic_selection": 3,
+          "write_file": 5
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 4,
+          "failed": 5,
+          "ok": 45
+        }
+      },
+      "training_topics": []
+    },
+    "load-l2": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:8ae74f8f-07c9-42c2-ad1c-701b503adac1",
+          "service_id": "urn:infai:ses:service:61447a7c-5e75-48dd-b2db-bcfcd23fa33d",
+          "variable_path": "value.sensor.MT175.P"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 3,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 0,
+          "proceed with your proposal": 8,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "1cc060097ba43108f9db3d46de1bf75ad8d3632f",
+        "final_launch": "th3ierpvotxxdtdzicstu4uede",
+        "final_successful_launch": "th3ierpvotxxdtdzicstu4uede",
+        "launches_without_a_kept_summary": [],
+        "session_id": "kkurktbhsaf42tazj7blxaddvm",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 3,
+        "completed_evaluations": 3,
+        "ended_on": "",
+        "launches": 3,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 1081624,
+        "cached_input_tokens": 9683646,
+        "input_tokens": 156,
+        "model_calls": 55,
+        "output_tokens": 54317
+      },
+      "tool_calls": {
+        "by_tool": {
+          "create_export": 1,
+          "delete_export": 1,
+          "estimate_read_cost": 1,
+          "get_device_metadata": 1,
+          "get_experiment_results": 1,
+          "get_import_type_metadata": 1,
+          "git_status": 3,
+          "launch_experiment": 3,
+          "list_devices": 1,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_import_types": 3,
+          "list_lib_files": 1,
+          "list_simulations": 1,
+          "preview_series": 2,
+          "probe_availability": 1,
+          "probe_export_data": 4,
+          "profile_series": 1,
+          "propose_data_selection": 1,
+          "read_file": 8,
+          "read_lib_file": 7,
+          "resolve_semantic_selection": 5,
+          "run_code": 1,
+          "search_ontology": 1,
+          "write_file": 6
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 7,
+          "failed": 1,
+          "ok": 56
+        }
+      },
+      "training_topics": []
+    },
+    "nilm-l0": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:22e2035c-0b19-42c8-8f12-2dd7c6ab111c",
+          "service_id": "urn:infai:ses:service:9dc0f355-85ef-4ecd-99ca-924b582a46fe",
+          "variable_path": "value.sensor.data.obis_16_7"
+        },
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:22e2035c-0b19-42c8-8f12-2dd7c6ab111c",
+          "service_id": "urn:infai:ses:service:9dc0f355-85ef-4ecd-99ca-924b582a46fe",
+          "variable_path": "value.sensor.data.obis_1_8_0_f"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 6,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 2,
+          "proceed with your proposal": 9,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "f484a71a9de10f7877c9055b56493aa6f71cd913",
+        "final_launch": "3fw55icpixqfz5samw2jav7dmu",
+        "final_successful_launch": "3fw55icpixqfz5samw2jav7dmu",
+        "launches_without_a_kept_summary": [],
+        "session_id": "3ykr7nqar36zck4zy3vcxo5ahu",
+        "test_window": {
+          "end": "2026-03-01T00:00:00Z",
+          "start": "2026-02-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 7,
+        "completed_evaluations": 5,
+        "ended_on": "",
+        "launches": 7,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 2200779,
+        "cached_input_tokens": 19483934,
+        "input_tokens": 240,
+        "model_calls": 78,
+        "output_tokens": 118493
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_device_metadata": 3,
+          "get_experiment_results": 3,
+          "git_status": 8,
+          "launch_experiment": 8,
+          "list_files": 1,
+          "list_lib_files": 1,
+          "list_simulations": 1,
+          "probe_availability": 7,
+          "propose_data_selection": 3,
+          "read_file": 9,
+          "read_lib_file": 11,
+          "resolve_semantic_selection": 3,
+          "run_code": 5,
+          "write_file": 19
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 16,
+          "ok": 82
+        }
+      },
+      "training_topics": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:2568aa36-08b0-460a-b921-ce360bcd5f3d",
+          "service_id": "urn:infai:ses:service:b99a5d0d-9221-4d63-9071-1e70e36344a7",
+          "variable_path": "value.root.egy_kwh"
+        },
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:b17cd5e1-8527-47df-a7e3-fd71b4b756fe",
+          "service_id": "urn:infai:ses:service:b99a5d0d-9221-4d63-9071-1e70e36344a7",
+          "variable_path": "value.root.egy_watt"
+        }
+      ]
+    },
+    "nilm-l1": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:22e2035c-0b19-42c8-8f12-2dd7c6ab111c",
+          "service_id": "urn:infai:ses:service:9dc0f355-85ef-4ecd-99ca-924b582a46fe",
+          "variable_path": "value.sensor.data.obis_1_8_0"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:aac42d68-bc8e-cefe-de8e-be1ac252541c",
+          "service_id": "",
+          "variable_path": "value.temperature_2m"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 5,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 1,
+          "proceed with your proposal": 4,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "02859c30fe03a91d7f432ae734c07f5c29204a19",
+        "final_launch": "6kskuek2zmbejgmemm37rhlfxa",
+        "final_successful_launch": "6kskuek2zmbejgmemm37rhlfxa",
+        "launches_without_a_kept_summary": [],
+        "session_id": "pgiw366hbaopdi2m7ar5ony3fy",
+        "test_window": {
+          "end": "2026-03-01T00:00:00Z",
+          "start": "2026-02-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 5,
+        "completed_evaluations": 5,
+        "ended_on": "",
+        "launches": 5,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 618950,
+        "cached_input_tokens": 18110706,
+        "input_tokens": 188,
+        "model_calls": 66,
+        "output_tokens": 110027
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_device_metadata": 3,
+          "get_experiment_results": 1,
+          "get_import_type_metadata": 1,
+          "git_status": 6,
+          "launch_experiment": 5,
+          "list_devices": 1,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_import_types": 1,
+          "list_lib_files": 1,
+          "list_simulations": 1,
+          "probe_availability": 5,
+          "probe_export_data": 1,
+          "profile_series": 5,
+          "propose_data_selection": 1,
+          "propose_operator_input": 1,
+          "read_file": 12,
+          "read_lib_file": 9,
+          "resolve_semantic_selection": 3,
+          "run_code": 4,
+          "search_ontology": 1,
+          "write_file": 14
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 11,
+          "ok": 79
+        }
+      },
+      "training_topics": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:b17cd5e1-8527-47df-a7e3-fd71b4b756fe",
+          "service_id": "urn:infai:ses:service:b99a5d0d-9221-4d63-9071-1e70e36344a7",
+          "variable_path": "value.root.egy_watt"
+        }
+      ]
+    },
+    "nilm-l2": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:22e2035c-0b19-42c8-8f12-2dd7c6ab111c",
+          "service_id": "urn:infai:ses:service:9dc0f355-85ef-4ecd-99ca-924b582a46fe",
+          "variable_path": "value.sensor.data.obis_1_8_0_f"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:aac42d68-bc8e-cefe-de8e-be1ac252541c",
+          "service_id": "",
+          "variable_path": "value.temperature_2m"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 7,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 3,
+          "proceed with your proposal": 8,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "cc701740a3500f4b1f2fa1d557eaadd2704f52ff",
+        "final_launch": "xdxgyg74l6xw7uhgssnaf3ju44",
+        "final_successful_launch": "xdxgyg74l6xw7uhgssnaf3ju44",
+        "launches_without_a_kept_summary": [],
+        "session_id": "nwpl3dxfu6opvekzmxlhf3poh4",
+        "test_window": {
+          "end": "2026-03-01T00:00:00Z",
+          "start": "2026-02-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 8,
+        "completed_evaluations": 8,
+        "ended_on": "",
+        "launches": 8,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 3819748,
+        "cached_input_tokens": 21416548,
+        "input_tokens": 246,
+        "model_calls": 83,
+        "output_tokens": 140802
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_device_metadata": 2,
+          "get_experiment_results": 1,
+          "get_import_type_metadata": 1,
+          "git_status": 2,
+          "launch_experiment": 8,
+          "list_devices": 2,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_lib_files": 1,
+          "list_simulation_datasets": 1,
+          "list_simulations": 1,
+          "preview_series": 5,
+          "probe_availability": 5,
+          "probe_export_data": 1,
+          "profile_series": 3,
+          "propose_data_selection": 1,
+          "propose_operator_input": 1,
+          "read_file": 11,
+          "read_lib_file": 12,
+          "resolve_semantic_selection": 2,
+          "run_code": 3,
+          "search_ontology": 1,
+          "write_file": 17
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 13,
+          "ok": 84
+        }
+      },
+      "training_topics": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:b17cd5e1-8527-47df-a7e3-fd71b4b756fe",
+          "service_id": "urn:infai:ses:service:b99a5d0d-9221-4d63-9071-1e70e36344a7",
+          "variable_path": "value.root.egy_watt"
+        },
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:d2fdf763-fa45-4bb1-b33e-af0a1982c557",
+          "service_id": "urn:infai:ses:service:b99a5d0d-9221-4d63-9071-1e70e36344a7",
+          "variable_path": "value.root.egy_kwh"
+        }
+      ]
+    },
+    "pv-l0": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:89169393-068d-4fb1-a032-2f238ad7ac9d",
+          "service_id": "urn:infai:ses:service:9ddd93b2-0988-407f-931d-a2ebcc8f6d94",
+          "variable_path": "value.root.powerTotal"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 7,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 2,
+          "proceed with your proposal": 10,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "db2f913a1c355d0445ee3e3a88b68cb1d5471202",
+        "final_launch": "of72usmmq3ybo7w3zrrtpsi5wu",
+        "final_successful_launch": "of72usmmq3ybo7w3zrrtpsi5wu",
+        "launches_without_a_kept_summary": [],
+        "session_id": "gxxwueunn7slbufiyhgmorykaa",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 7,
+        "completed_evaluations": 7,
+        "ended_on": "",
+        "launches": 7,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 906568,
+        "cached_input_tokens": 14115765,
+        "input_tokens": 242,
+        "model_calls": 76,
+        "output_tokens": 136565
+      },
+      "tool_calls": {
+        "by_tool": {
+          "get_experiment_results": 2,
+          "git_status": 6,
+          "launch_experiment": 7,
+          "list_files": 1,
+          "list_lib_files": 1,
+          "list_simulation_device_types": 1,
+          "list_simulation_templates": 1,
+          "list_simulations": 1,
+          "probe_availability": 2,
+          "propose_data_selection": 1,
+          "quick_profile": 2,
+          "read_file": 12,
+          "read_lib_file": 6,
+          "resolve_semantic_selection": 3,
+          "run_code": 9,
+          "search_ontology": 1,
+          "write_file": 22
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 17,
+          "failed": 1,
+          "invalid_input": 1,
+          "ok": 76
+        }
+      },
+      "training_topics": []
+    },
+    "pv-l1": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:89169393-068d-4fb1-a032-2f238ad7ac9d",
+          "service_id": "urn:infai:ses:service:9ddd93b2-0988-407f-931d-a2ebcc8f6d94",
+          "variable_path": "value.root.powerTotal"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.cloud_cover"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.diffuse_radiation"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.direct_radiation"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.forecasted_for"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.issued_at"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.lead_days"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.shortwave_radiation"
+        },
+        {
+          "filter_type": "ImportId",
+          "filter_value": "urn:infai:ses:import:6fd7bbee-c1dd-d165-562d-d43c7d300055",
+          "service_id": "",
+          "variable_path": "value.temperature_2m"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 3,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 1,
+          "proceed with your proposal": 5,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "5c098cdf95d59cf6f8c7b7bff80b6ee92ea1b66d",
+        "final_launch": "i6eeqmg2auv7k6xk57awaqqsa4",
+        "final_successful_launch": "i6eeqmg2auv7k6xk57awaqqsa4",
+        "launches_without_a_kept_summary": [],
+        "session_id": "7jug3cwcncyyalkhmsgbcq25wm",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 5,
+        "completed_evaluations": 5,
+        "ended_on": "",
+        "launches": 5,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 413304,
+        "cached_input_tokens": 9840236,
+        "input_tokens": 172,
+        "model_calls": 58,
+        "output_tokens": 103823
+      },
+      "tool_calls": {
+        "by_tool": {
+          "create_import_instance": 1,
+          "get_experiment_results": 2,
+          "get_import_type_metadata": 2,
+          "git_status": 5,
+          "launch_experiment": 5,
+          "list_files": 1,
+          "list_import_instances": 1,
+          "list_lib_files": 1,
+          "probe_availability": 1,
+          "probe_export_data": 3,
+          "profile_series": 2,
+          "propose_data_selection": 1,
+          "propose_operator_input": 1,
+          "read_file": 8,
+          "read_lib_file": 7,
+          "resolve_semantic_selection": 3,
+          "run_code": 4,
+          "search_ontology": 1,
+          "write_file": 9
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 12,
+          "invalid_input": 1,
+          "ok": 57
+        }
+      },
+      "training_topics": []
+    },
+    "pv-l2": {
+      "covariates": [
+        {
+          "filter_type": "DeviceId",
+          "filter_value": "urn:infai:ses:device:89169393-068d-4fb1-a032-2f238ad7ac9d",
+          "service_id": "urn:infai:ses:service:9ddd93b2-0988-407f-931d-a2ebcc8f6d94",
+          "variable_path": "value.root.powerTotal"
+        }
+      ],
+      "developer_prompts": {
+        "by_kind": {
+          "are you done": 0,
+          "committed": 3,
+          "experiment done": 0,
+          "opening problem statement": 1,
+          "other": 1,
+          "proceed with your proposal": 5,
+          "readme summary": 1
+        }
+      },
+      "sources": {
+        "commit_sha": "e89bf32b1bb06f473106b198a4b78eb60d17f065",
+        "final_launch": "uid4butsj7tjjfhs7wchm3xcha",
+        "final_successful_launch": "uid4butsj7tjjfhs7wchm3xcha",
+        "launches_without_a_kept_summary": [],
+        "session_id": "jpgsbah4zhqp5vnxybhrakjo4a",
+        "test_window": {
+          "end": "2026-10-01T00:00:00Z",
+          "start": "2026-09-01T00:00:00Z"
+        }
+      },
+      "termination": {
+        "committed_launches": 3,
+        "completed_evaluations": 3,
+        "ended_on": "",
+        "launches": 3,
+        "reached_operator_and_evaluation": true,
+        "stopped_at": ""
+      },
+      "tokens": {
+        "cache_write_tokens": 437798,
+        "cached_input_tokens": 8068918,
+        "input_tokens": 150,
+        "model_calls": 49,
+        "output_tokens": 84810
+      },
+      "tool_calls": {
+        "by_tool": {
+          "estimate_read_cost": 1,
+          "get_experiment_results": 1,
+          "git_status": 3,
+          "launch_experiment": 3,
+          "list_files": 1,
+          "list_import_types": 1,
+          "list_lib_files": 1,
+          "list_simulation_datasets": 1,
+          "list_simulation_device_types": 1,
+          "list_simulation_templates": 1,
+          "list_simulations": 1,
+          "preview_series": 2,
+          "probe_availability": 2,
+          "profile_series": 2,
+          "propose_data_selection": 1,
+          "read_file": 7,
+          "read_lib_file": 8,
+          "resolve_semantic_selection": 3,
+          "run_code": 8,
+          "search_ontology": 1,
+          "write_file": 9
+        },
+        "dispatch_events_by_outcome": {
+          "awaiting_confirmation": 12,
+          "ok": 58
+        }
+      },
+      "training_topics": []
+    }
+  }
+}

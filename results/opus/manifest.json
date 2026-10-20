@@ -1,0 +1,90 @@
+{
+  "discovered": {
+    "answers": [
+      {
+        "field": "session_id",
+        "run_id": "pv-l0",
+        "value": "gxxwueunn7slbufiyhgmorykaa  2026-10-08T09:28:46.779733+00:00  tier L0  170 messages  7 launches  PV L0  (reached an evaluation)"
+      },
+      {
+        "field": "session_id",
+        "run_id": "pv-l2",
+        "value": "4syg6o7h62chno2lcwv5le3ezq  2026-10-08T12:27:24.395834+00:00  tier L2  119 messages  6 launches  PV L2  (reached an evaluation)"
+      },
+      {
+        "field": "session_id",
+        "run_id": "load-l0",
+        "value": "54ty3caiwi5qfrcl3zenwtk7yy  2026-10-09T04:59:07.18469+00:00  tier L0  60 messages  1 launches  Load L0  (reached an evaluation)"
+      }
+    ],
+    "at": "2026-10-09T08:34:07.879969+00:00",
+    "ode_database": "localhost:5432/ode",
+    "scoring_script": "not a git repository"
+  },
+  "runs": [
+    {
+      "ended_on": "",
+      "run_id": "load-l0",
+      "session_id": "54ty3caiwi5qfrcl3zenwtk7yy",
+      "tier": "L0",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "load-l1",
+      "session_id": "nhr2md2gwyorzqbcdibiuydqje",
+      "tier": "L1",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "load-l2",
+      "session_id": "kkurktbhsaf42tazj7blxaddvm",
+      "tier": "L2",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "nilm-l0",
+      "session_id": "3ykr7nqar36zck4zy3vcxo5ahu",
+      "tier": "L0",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "",
+      "run_id": "nilm-l1",
+      "session_id": "pgiw366hbaopdi2m7ar5ony3fy",
+      "tier": "L1",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "",
+      "run_id": "nilm-l2",
+      "session_id": "nwpl3dxfu6opvekzmxlhf3poh4",
+      "tier": "L2",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l0",
+      "session_id": "gxxwueunn7slbufiyhgmorykaa",
+      "tier": "L0",
+      "use_case": "pv"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l1",
+      "session_id": "7jug3cwcncyyalkhmsgbcq25wm",
+      "tier": "L1",
+      "use_case": "pv"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l2",
+      "session_id": "jpgsbah4zhqp5vnxybhrakjo4a",
+      "tier": "L2",
+      "use_case": "pv"
+    }
+  ],
+  "series": "opus"
+}

@@ -1,0 +1,19 @@
+model,use_case,tier,best_error_w,approach,termination_reason
+claude-opus-5-5,pv,L0,45.86,Irradiance forecast scaled by a quantile of the PV-to-irradiance ratio (no learned model),Repeatedly requested L1 data
+claude-opus-5-5,pv,L1,52.77,Gradient boosting on weather forecast and PV lags,No further improvement found
+claude-opus-5-5,pv,L2,65.04,Irradiance forecast scaled by the hourly median of the PV-to-irradiance ratio (no learned model),No further improvement found
+claude-opus-5-5,load,L0,223.75,OLS on lags and hour-of-week profile,Repeatedly requested L1 data
+claude-opus-5-5,load,L1,219.51,OLS on lags and weekday/weekend daily profile,No further improvement found
+claude-opus-5-5,load,L2,219.98,Ridge regression on lags and weekend flag,No change in three turns
+claude-opus-5-5,nilm,L0,872.33,Gradient boosting on main-meter features,Repeatedly requested L1 data
+claude-opus-5-5,nilm,L1,928.18,Gradient boosting on main-meter features and temperature,No further improvement found
+claude-opus-5-5,nilm,L2,790.52,Gradient boosting on main-meter features and temperature,No further improvement found
+claude-haiku-5-5,pv,L0,67.84,Month-by-hour profile of PV history (no learned model),"No change in three turns, waiting for a weather import"
+claude-haiku-5-5,pv,L1,65,"OLS on PV lag, month-by-hour profile, solar elevation, and cloud cover","No change in three turns, waiting for counts from the test window"
+claude-haiku-5-5,pv,L2,67.96,Month-by-hour profile of PV history plus slope on current value,"No change in three turns, waiting for a weather import"
+claude-haiku-5-5,load,L0,225.59,Hour-of-week profile weighted to recent weeks,"No change in three turns, waiting for errors from the test window"
+claude-haiku-5-5,load,L1,225.31,Hour-of-week profile plus offset from last 24 hours,"No change in three turns, waiting for the site's location"
+claude-haiku-5-5,load,L2,219.51,Weekday/weekend hourly profile,No further improvement found
+claude-haiku-5-5,nilm,L0,1258.91,Lookup table on main-meter power and temperature band,"No change in three turns, waiting for a decision on the heating meter"
+claude-haiku-5-5,nilm,L1,,Least squares on main-meter features and hour (not evaluated),"No change in three turns, waiting for the log of its failed launch"
+claude-haiku-5-5,nilm,L2,973.49,Gradient boosting on main-meter features and temperature,"No change in three turns, waiting for errors from the test window"

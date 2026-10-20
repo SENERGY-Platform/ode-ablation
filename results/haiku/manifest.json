@@ -1,0 +1,80 @@
+{
+  "discovered": {
+    "answers": [
+      {
+        "field": "ended_on",
+        "run_id": "nilm-l1",
+        "value": "abandonment"
+      }
+    ],
+    "at": "2026-10-16T08:42:39.568816+00:00",
+    "ode_database": "localhost:5432/ode",
+    "scoring_script": "ab43138b5111103304247abd214ce9ec695b81fa"
+  },
+  "runs": [
+    {
+      "ended_on": "",
+      "run_id": "load-l0",
+      "session_id": "2pahusake44fx6i52tf7cvq2ca",
+      "tier": "L0",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "load-l1",
+      "session_id": "7d3zjx77mprfeqiirbxpreu23y",
+      "tier": "L1",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "load-l2",
+      "session_id": "kh3ksheomjzgl7axd32gyr5vtq",
+      "tier": "L2",
+      "use_case": "load"
+    },
+    {
+      "ended_on": "",
+      "run_id": "nilm-l0",
+      "session_id": "akc6mk3e64rzmgp6ytk5ax63py",
+      "tier": "L0",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "abandonment",
+      "run_id": "nilm-l1",
+      "session_id": "64rto4aidt2ivotucce3pd5ekq",
+      "tier": "L1",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "",
+      "run_id": "nilm-l2",
+      "session_id": "vorfxcg4zoe4jcmvpkxbgdtrom",
+      "tier": "L2",
+      "use_case": "nilm"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l0",
+      "session_id": "ih7b5kw33rhxr4ywdgw3pvcrly",
+      "tier": "L0",
+      "use_case": "pv"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l1",
+      "session_id": "53w6cmfaltbjl7lkdgx35fmteq",
+      "tier": "L1",
+      "use_case": "pv"
+    },
+    {
+      "ended_on": "",
+      "run_id": "pv-l2",
+      "session_id": "4thrxpu3papznm3nssiu4jcw54",
+      "tier": "L2",
+      "use_case": "pv"
+    }
+  ],
+  "series": "haiku"
+}

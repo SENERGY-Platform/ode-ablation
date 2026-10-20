@@ -1,0 +1,10 @@
+run_id,use_case,tier,model,launches,developer_prompts,tokens,tool_calls,confirmations,tier_raise_requests,covariate_count,declined_confirmations,tool_calls_blocked_by_tier,exchanges_aborted_at_iteration_cap,reached_operator_and_evaluation,ended_on
+load-l0,load,L0,claude-opus-5-5,1,8,4356520,38,3,2,1,0,0,0,True,
+load-l1,load,L1,claude-opus-5-5,3,9,5370268,51,4,0,1,0,0,0,True,
+load-l2,load,L2,claude-opus-5-5,3,13,10819743,57,7,0,1,0,0,0,True,
+nilm-l0,nilm,L0,claude-opus-5-5,7,19,21803446,83,16,5,2,1,0,0,True,
+nilm-l1,nilm,L1,claude-opus-5-5,5,12,18839871,79,11,0,2,0,0,0,True,
+nilm-l2,nilm,L2,claude-opus-5-5,8,20,25377344,84,13,0,2,0,0,0,True,
+pv-l0,pv,L0,claude-opus-5-5,7,21,15159140,78,17,8,1,0,0,0,True,
+pv-l1,pv,L1,claude-opus-5-5,5,11,10357535,58,12,0,9,0,0,0,True,
+pv-l2,pv,L2,claude-opus-5-5,3,11,8591676,58,12,0,1,0,0,0,True,

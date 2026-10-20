@@ -1,0 +1,108 @@
+{
+  "_comment": [
+    "What `score_runs.py discover` writes and a human reviews. The ids below are",
+    "placeholders. Every field is required. `score_runs.py score` raises with the",
+    "run id and the field rather than defaulting one.",
+    "",
+    "Only what no ODE record decides is in here: which session is which case, and",
+    "how a run without a completed evaluation ended.",
+    "",
+    "series is 'opus' or 'haiku'. One manifest holds the runs with one model, and",
+    "every session it names is checked against that model.",
+    "",
+    "run_id is `{use_case}-{tier}`, lower case, and is checked against both.",
+    "No two runs name the same session, since a session is one case.",
+    "",
+    "ended_on is empty for a run that reached a completed evaluation. For a run",
+    "that did not: 'abandonment', 'wall clock' or 'launch cap', the rules of",
+    "../protocol.md, End of a run. None of them is an ODE record, so they enter",
+    "the scoring here and nowhere else.",
+    "",
+    "The `discovered` block is written by `discover` and read by nobody. It records",
+    "when the proposal was made, against which database, and every answer the",
+    "developer gave where the records left a choice."
+  ],
+  "discovered": {
+    "at": "2026-09-25T17:04:11.918233+00:00",
+    "ode_database": "localhost:5432/ode",
+    "scoring_script": "0000000000000000000000000000000000000000",
+    "answers": [
+      {
+        "run_id": "pv-l0",
+        "field": "session_id",
+        "value": "s-0001  2026-09-22T09:12:00Z  tier L0  84 messages  3 launches  untitled  (reached an evaluation)"
+      },
+      {
+        "run_id": "load-l2",
+        "field": "ended_on",
+        "value": "wall clock"
+      }
+    ]
+  },
+  "runs": [
+    {
+      "run_id": "pv-l0",
+      "use_case": "pv",
+      "tier": "L0",
+      "session_id": "s-0001",
+      "ended_on": ""
+    },
+    {
+      "run_id": "pv-l1",
+      "use_case": "pv",
+      "tier": "L1",
+      "session_id": "s-0002",
+      "ended_on": ""
+    },
+    {
+      "run_id": "pv-l2",
+      "use_case": "pv",
+      "tier": "L2",
+      "session_id": "s-0003",
+      "ended_on": ""
+    },
+    {
+      "run_id": "load-l0",
+      "use_case": "load",
+      "tier": "L0",
+      "session_id": "s-0004",
+      "ended_on": ""
+    },
+    {
+      "run_id": "load-l1",
+      "use_case": "load",
+      "tier": "L1",
+      "session_id": "s-0005",
+      "ended_on": ""
+    },
+    {
+      "run_id": "load-l2",
+      "use_case": "load",
+      "tier": "L2",
+      "session_id": "s-0006",
+      "ended_on": "wall clock"
+    },
+    {
+      "run_id": "nilm-l0",
+      "use_case": "nilm",
+      "tier": "L0",
+      "session_id": "s-0007",
+      "ended_on": ""
+    },
+    {
+      "run_id": "nilm-l1",
+      "use_case": "nilm",
+      "tier": "L1",
+      "session_id": "s-0008",
+      "ended_on": ""
+    },
+    {
+      "run_id": "nilm-l2",
+      "use_case": "nilm",
+      "tier": "L2",
+      "session_id": "s-0009",
+      "ended_on": ""
+    }
+  ],
+  "series": "opus"
+}
